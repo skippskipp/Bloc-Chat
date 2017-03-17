@@ -1,6 +1,6 @@
 <h1>Bloc Chat</h1>
-<table ng-repeat="room in home.rooms.all track by $index">
-    <tr>
-        <td> {{ room.$id }} </td>
+<table>
+    <tr ng-repeat="room in home.roomService.all track by $index">
+        <td> {{ room.$value }} </td>
     </tr>
 </table>

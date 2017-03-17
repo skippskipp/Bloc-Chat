@@ -1,9 +1,9 @@
 (function() {
-    function DisplayRoomsCtrl(Room) {
-        this.rooms = Room;
+    function DisplayRoomsCtrl(RoomService) {
+        this.roomService = RoomService;
     }
  
     angular
         .module('blocChat')
-        .controller('DisplayRoomsCtrl', ['Room', DisplayRoomsCtrl]);
+        .controller('DisplayRoomsCtrl', ['RoomService', DisplayRoomsCtrl]);
 })();
