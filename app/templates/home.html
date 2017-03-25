@@ -1,6 +1,14 @@
-<h1>Bloc Chat</h1>
+<h1>Bloc Chat hi</h1>
 <table>
     <tr ng-repeat="room in home.roomService.all track by $index">
-        <td> {{ room.$value }} </td>
+        <td> {{ room.roomName }} </td>
     </tr>
 </table>
+<table>
+    <tr>
+        <td> {{ message.username }} : {{ message.content }} </td>
+    </tr>
+</table>
+<div>
+    <button ng-click="home.openModal()"> Create Room </button>
+</div>

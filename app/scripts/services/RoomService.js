@@ -1,15 +1,25 @@
 (function() {
     function RoomService($firebaseArray) {
         var RoomService = {};
-        
-        var ref = firebase.database().ref().child("rooms");
+        var ref = firebase.database().ref().child('rooms');
         
         RoomService.all = $firebaseArray(ref);
         
-        return RoomService
+        RoomService.add = function(roomName) {
+            $firebaseArray(ref).$add({ roomName : roomName }).then(function(ref) {
+                var id = ref.key;
+                console.log("added record with id " + id);
+            })
+        };
+        
+        console.log(RoomService.all);
+        
+        return RoomService;
     }
 
   angular
     .module('blocChat')
     .factory('RoomService', ['$firebaseArray', RoomService]);
 })();
+
+
