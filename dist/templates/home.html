@@ -1,11 +1,15 @@
 <h1>Bloc Chat hi</h1>
 <table>
     <tr ng-repeat="room in home.roomService.all track by $index">
-        <td> {{ room.roomName }} </td>
+        <td ng-click="home.select(room)"> {{ room.roomName }} </td>
     </tr>
 </table>
 <table>
     <tr>
+        <td> {{ home.activeRoom.roomName }}</td>
+    </tr>
+<br/>
+    <tr ng-repeat="message in home.messageService.messages">
         <td> {{ message.username }} : {{ message.content }} </td>
     </tr>
 </table>

@@ -1,14 +1,18 @@
 (function() {
     function MessageService($firebaseArray, RoomService) {
         var MessageService = {};
-        var ref = firebase.database().ref().child('messages');
+        var ref = firebase.database().ref().child("messages");
         
-        MessageService.all = $firebaseArray(ref);
+        MessageService.messages = [];
+        
+        MessageService.getByRoomId = function(roomId) {
+            console.log(roomId);
+            var roomMessages = ref.orderByChild("roomId").equalTo(roomId);
+            MessageService.messages = $firebaseArray(roomMessages);
+        };
         
         MessageService.add = function(messageContent) {
             $firebaseArray(ref).$add({ username : "JOHN", content: messageContent, sentAt: "TIME", roomId: "ROOM UID HERE" }).then(function(ref) {
-                var id = ref.key;
-                console.log("added record with id " + id);
             })
         };
         
