@@ -12,8 +12,6 @@
             })
         };
         
-        console.log(RoomService.all);
-        
         return RoomService;
     }
 
