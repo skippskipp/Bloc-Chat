@@ -4,6 +4,8 @@
         this.roomData = RoomService.all;
         this.activeRoom = null;
         this.messageService = MessageService;
+        this.messages = MessageService.messages;
+        this.message = '';
         
         this.openModal = function() {
                 $uibModal.open({
@@ -15,10 +17,14 @@
         
         this.select = function(room) {
             this.activeRoom = room;
-            console.log("the active room is " + this.activeRoom);
-            console.log("the active room's id is ");
             MessageService.getByRoomId(room.$id);
-            console.log(this.messageService.messages);
+        }
+        
+        this.sendMessage = function() {
+            if (this.activeRoom && this.message !== '') {
+                MessageService.sendMessage(this.message, this.activeRoom.$id);
+                this.message = '';
+            }
         }
     }
  
